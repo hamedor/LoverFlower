@@ -1,0 +1,83 @@
+{
+    "products":[
+        {
+            "id":1,
+            "url":"#",
+            "title": "Flower",
+            "text": "sometext",
+            "labels":[
+                {
+                    "type": "HOTflower"
+                }
+            ],
+            "image": ".//img/catalog/flower01.jpg",
+            "price": "3000",
+            "priceOld":""
+        },
+        {   "id":2,
+            "url":"#",
+            "title": "Flower",
+            "text": "sometext",
+            "labels":[
+                {
+                    "type": "HOTflower"
+                }
+            ],
+            "image": ".//img/catalog/flower02.jpg",
+            "price": "3000",
+            "priceOld":""
+        },
+        {   "id":3,
+            "url":"#",
+            "title": "HOTFlower",
+            "text": "sometext",
+            "labels":[
+                {
+                    "type": "HOTflower"
+                }
+            ],
+            "image": ".//img/catalog/flower03.jpg",
+            "price": "3000",
+            "priceOld":""
+        },
+        {   "id":4,
+            "url":"#",
+            "title": "HOTFlower",
+            "text": "sometext",
+            "labels":[
+                {
+                    "type": "HOTflower"
+                }
+            ],
+            "image": ".//img/catalog/flower03.jpg",
+            "price": "3000",
+            "priceOld":""
+        },
+        {   "id":5,
+            "url":"#",
+            "title": "HOTFlower",
+            "text": "sometext",
+            "labels":[
+                {
+                    "type": "HOTflower"
+                }
+            ],
+            "image": ".//img/catalog/flower03.jpg",
+            "price": "3000",
+            "priceOld":""
+        },
+        {   "id":6,
+            "url":"#",
+            "title": "HOTFlower",
+            "text": "sometext",
+            "labels":[
+                {
+                    "type": "HOTflower"
+                }
+            ],
+            "image": ".//img/catalog/flower03.jpg",
+            "price": "3000",
+            "priceOld":""
+        }
+    ]
+}
