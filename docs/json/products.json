@@ -3,7 +3,7 @@
         {
             "id":1,
             "url":"#",
-            "title": "Flower",
+            "title": "Flower1",
             "text": "sometext",
             "labels":[
                 {
@@ -12,11 +12,12 @@
             ],
             "image": ".//img/catalog/flower01.jpg",
             "price": "3000",
-            "priceOld":""
+            "priceOld":"",
+            "type": "popular"
         },
         {   "id":2,
             "url":"#",
-            "title": "Flower",
+            "title": "Flower2",
             "text": "sometext",
             "labels":[
                 {
@@ -25,11 +26,12 @@
             ],
             "image": ".//img/catalog/flower02.jpg",
             "price": "3000",
-            "priceOld":""
+            "priceOld":"",
+            "type": "popular"
         },
         {   "id":3,
             "url":"#",
-            "title": "HOTFlower",
+            "title": "Flower3",
             "text": "sometext",
             "labels":[
                 {
@@ -38,44 +40,118 @@
             ],
             "image": ".//img/catalog/flower03.jpg",
             "price": "3000",
-            "priceOld":""
+            "priceOld":"",
+            "type": "popular"
         },
         {   "id":4,
             "url":"#",
-            "title": "HOTFlower",
+            "title": "Flower4",
             "text": "sometext",
             "labels":[
                 {
                     "type": "HOTflower"
                 }
             ],
-            "image": ".//img/catalog/flower03.jpg",
+            "image": ".//img/catalog/flower04.jpg",
             "price": "3000",
-            "priceOld":""
+            "priceOld":"",
+            "type": "popular"
         },
         {   "id":5,
             "url":"#",
-            "title": "HOTFlower",
+            "title": "Flower5",
             "text": "sometext",
             "labels":[
                 {
                     "type": "HOTflower"
                 }
             ],
-            "image": ".//img/catalog/flower03.jpg",
+            "image": ".//img/catalog/flower05.jpg",
             "price": "3000",
-            "priceOld":""
+            "priceOld":"",
+            "type": "popular"
         },
         {   "id":6,
             "url":"#",
-            "title": "HOTFlower",
+            "title": "Flower6",
             "text": "sometext",
             "labels":[
                 {
                     "type": "HOTflower"
                 }
             ],
-            "image": ".//img/catalog/flower03.jpg",
+            "image": ".//img/catalog/flower06.jpg",
+            "price": "3000",
+            "priceOld":"",
+            "type": "popular"
+        },
+        {
+            "id":7,
+            "url":"#",
+            "title": "Flower7",
+            "text": "sometext",
+            "labels":[
+                {
+                    "type": "HOTflower"
+                }
+            ],
+            "image": ".//img/catalog/flower07.jpg",
+            "price": "3000",
+            "priceOld":""
+        },
+        {
+            "id":8,
+            "url":"#",
+            "title": "Flower8",
+            "text": "sometext",
+            "labels":[
+                {
+                    "type": "HOTflower"
+                }
+            ],
+            "image": ".//img/catalog/flower08.jpg",
+            "price": "3000",
+            "priceOld":""
+        },
+        {
+            "id":9,
+            "url":"#",
+            "title": "Flower9",
+            "text": "sometext",
+            "labels":[
+                {
+                    "type": "HOTflower"
+                }
+            ],
+            "image": ".//img/catalog/flower09.jpg",
+            "price": "3000",
+            "priceOld":""
+        },
+        {
+            "id":10,
+            "url":"#",
+            "title": "Flower10",
+            "text": "sometext",
+            "labels":[
+                {
+                    "type": "HOTflower"
+                }
+            ],
+            "image": ".//img/catalog/flower10.jpg",
+            "price": "3000",
+            "priceOld":""
+        },
+        {
+            "id":11,
+            "url":"#",
+            "title": "Flower11",
+            "text": "sometext",
+            "labels":[
+                {
+                    "type": "HOTflower"
+                }
+            ],
+            "image": ".//img/catalog/flower11.jpg",
             "price": "3000",
             "priceOld":""
         }
