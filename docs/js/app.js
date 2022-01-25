@@ -143,10 +143,13 @@ function loadProducts(data){
 
 
 
-		if((clean_url== 'http:localhost:3000index.html' || clean_url== 'http:localhost:3000')){
+		if((clean_url== 'http:localhost:3000index.html' || clean_url== 'http:localhost:3000'
+		|| clean_url=='https:hamedor.github.ioLoverFlowerindex.html' || clean_url== 'https:hamedor.github.ioLoverFlower')){
 			mainPageItems.insertAdjacentHTML("beforeend", productTemplate);
-		}else if(clean_url == 'http:localhost:3000catalog.html'){
+			
+		}else if(clean_url == 'http:localhost:3000catalog.html' || 'https:hamedor.github.ioLoverFlowercatalog.html'){
 			catalogPageItems.insertAdjacentHTML("beforeend", productTemplate);
+			
 		}
 	
 	});
@@ -159,7 +162,8 @@ window.onload = function(){
     getProducts();
     let url = window.location.href;
 	let clean_url = url.replace(/(\\|\/)/g,'')
-    if(window.outerWidth >= windowTrigger && clean_url== 'http:localhost:3000index.html' || clean_url== 'http:localhost:3000'){
+    if(window.outerWidth >= windowTrigger && clean_url== 'http:localhost:3000index.html' || clean_url== 'http:localhost:3000' 
+    || clean_url=='https:hamedor.github.ioLoverFlowerindex.html' || clean_url== "https:hamedor.github.ioLoverFlower"){
         swiperInit();
         setTimeout(function () {
             swiper.update(swiper);
@@ -198,7 +202,7 @@ function swiperDestroy(){
 	if(swiper){
 		swiper.destroy();
 		swiper= null;
-		console.log("spiwer destroyed");
+		
 	}
 }
 if(clean_url== 'http:localhost:3000index.html'){
