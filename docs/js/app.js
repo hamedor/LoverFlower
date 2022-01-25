@@ -31,17 +31,37 @@ async function getProducts(){
 	let response = await fetch(file,{
 		method:"GET"
 	});
+
+	if(response.ok){
+		let result = await response.json();
+		filterProducts(result);
+		console.log(result);
+	}
+}
+
+
+
+
+
+async function getProducts(){
+	const file = "json/products.json";
+	let response = await fetch(file,{
+		method:"GET"
+	});
+
 	if(response.ok){
 		let result = await response.json();
 		loadProducts(result);
-	}else{
-		alert("Ошибка");
 	}
 }
 
 function loadProducts(data){
-	const productsItems = document.querySelector(".swiper-wrapper");
-
+	const mainPageItems = document.querySelector(".swiper-wrapper");
+	const catalogPageItems = document.querySelector(".products-catalog");
+	let url = window.location.href;
+	let clean_url = url.replace(/(\\|\/)/g,'')
+	let productTemplateStart;
+	
 	data.products.forEach(item =>{
 		const productId = item.id;
 		const productUrl = item.url;
@@ -51,8 +71,20 @@ function loadProducts(data){
 		const productPrice = item.price;
 		const productPriceOld = item.priceOld;
 		const productLabels = item.labels;
+		const productPopularity = item.popular;
 
-		let productTemplateStart = `<div data-pid="${productId}" class="swiper-slide">`;
+
+	
+			
+		
+
+		if((clean_url== 'http:localhost:3000index.html' || clean_url== 'http:localhost:3000' )){
+			productTemplateStart = `<div data-pid="${productId}" class="swiper-slide">`;
+		}else if(clean_url == 'http:localhost:3000catalog.html'){
+			productTemplateStart = `<div data-pid="${productId}" class="item-product">`;
+		}
+
+		
 		let productTemplateEnd = `</div>`;
 
 		let productTemplateLabels = ``
@@ -109,15 +141,25 @@ function loadProducts(data){
 		productTemplate += productTemplateButton;
 		productTemplate += productTemplateEnd;
 
-		
-		productsItems.insertAdjacentHTML("beforeend", productTemplate);
+
+
+		if((clean_url== 'http:localhost:3000index.html' || clean_url== 'http:localhost:3000')){
+			mainPageItems.insertAdjacentHTML("beforeend", productTemplate);
+		}else if(clean_url == 'http:localhost:3000catalog.html'){
+			catalogPageItems.insertAdjacentHTML("beforeend", productTemplate);
+		}
+	
 	});
 
 }
 
+
+
 window.onload = function(){
     getProducts();
-    if(window.outerWidth >= windowTrigger){
+    let url = window.location.href;
+	let clean_url = url.replace(/(\\|\/)/g,'')
+    if(window.outerWidth >= windowTrigger && clean_url== 'http:localhost:3000index.html' || clean_url== 'http:localhost:3000'){
         swiperInit();
         setTimeout(function () {
             swiper.update(swiper);
@@ -127,6 +169,8 @@ window.onload = function(){
 let swiper = null;
 let windowTrigger = 768;
 let swiperContainer = document.querySelector('.swiper-container');
+let url = window.location.href;
+let clean_url = url.replace(/(\\|\/)/g,'')
 
 console.log(swiper);
 function swiperInit(){
@@ -157,7 +201,7 @@ function swiperDestroy(){
 		console.log("spiwer destroyed");
 	}
 }
-
+if(clean_url== 'http:localhost:3000index.html'){
 onresize = function(){
 	let width = window.innerWidth;
 	if(width >= windowTrigger){
@@ -167,6 +211,7 @@ onresize = function(){
 			swiperDestroy();
 		
 		}
+}
 }
 
 
