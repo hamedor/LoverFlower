@@ -143,9 +143,7 @@ function loadProducts(data){
 
 		if((mainPageItems)){
 			mainPageItems.insertAdjacentHTML("beforeend", productTemplate);
-			setTimeout(function () {
-				swiper.update(swiper);
-			 }, 500);
+			
 			
 		}else if(catalogPageItems){
 			catalogPageItems.insertAdjacentHTML("beforeend", productTemplate);
@@ -162,6 +160,9 @@ window.onload = function(){
     getProducts();
     if(window.outerWidth >= windowTrigger){
         swiperInit();
+	    setTimeout(function () {
+				swiper.update(swiper);
+			 }, 500);
       
     }
 }
