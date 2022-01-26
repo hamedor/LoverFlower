@@ -58,8 +58,6 @@ async function getProducts(){
 function loadProducts(data){
 	const mainPageItems = document.querySelector(".swiper-wrapper");
 	const catalogPageItems = document.querySelector(".products-catalog");
-	let url = window.location.href;
-	let clean_url = url.replace(/(\\|\/)/g,'')
 	let productTemplateStart;
 	
 	data.products.forEach(item =>{
@@ -78,9 +76,9 @@ function loadProducts(data){
 			
 		
 
-		if((clean_url== 'http:localhost:3000index.html' || clean_url== 'http:localhost:3000' )){
+		if((mainPageItems)){
 			productTemplateStart = `<div data-pid="${productId}" class="swiper-slide">`;
-		}else if(clean_url == 'http:localhost:3000catalog.html'){
+		}else if(catalogPageItems){
 			productTemplateStart = `<div data-pid="${productId}" class="item-product">`;
 		}
 
@@ -143,11 +141,13 @@ function loadProducts(data){
 
 
 
-		if((clean_url== 'http:localhost:3000index.html' || clean_url== 'http:localhost:3000'
-		|| clean_url=='https:hamedor.github.ioLoverFlowerindex.html' || clean_url== 'https:hamedor.github.ioLoverFlower')){
+		if((mainPageItems)){
 			mainPageItems.insertAdjacentHTML("beforeend", productTemplate);
+			setTimeout(function () {
+				swiper.update(swiper);
+			 }, 500);
 			
-		}else if(clean_url == 'http:localhost:3000catalog.html' || 'https:hamedor.github.ioLoverFlowercatalog.html'){
+		}else if(catalogPageItems){
 			catalogPageItems.insertAdjacentHTML("beforeend", productTemplate);
 			
 		}
@@ -160,14 +160,9 @@ function loadProducts(data){
 
 window.onload = function(){
     getProducts();
-    let url = window.location.href;
-	let clean_url = url.replace(/(\\|\/)/g,'')
-    if(window.outerWidth >= windowTrigger && clean_url== 'http:localhost:3000index.html' || clean_url== 'http:localhost:3000' 
-    || clean_url=='https:hamedor.github.ioLoverFlowerindex.html' || clean_url== "https:hamedor.github.ioLoverFlower"){
+    if(window.outerWidth >= windowTrigger){
         swiperInit();
-        setTimeout(function () {
-            swiper.update(swiper);
-         }, 500);
+      
     }
 }
 let swiper = null;
@@ -205,7 +200,7 @@ function swiperDestroy(){
 		
 	}
 }
-if(clean_url== 'http:localhost:3000index.html'){
+
 onresize = function(){
 	let width = window.innerWidth;
 	if(width >= windowTrigger){
@@ -216,7 +211,7 @@ onresize = function(){
 		
 		}
 }
-}
+
 
 
 
