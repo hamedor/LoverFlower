@@ -3,6 +3,8 @@ const catalogPageItems = document.querySelector(".products-catalog");
 const items = document.querySelector(".item-product");
 const checkbox = document.querySelector('#filters');
 
+if(catalogPageItems || mainPageItems){
+
 function addEvent(elem, type, handler){
     if(elem.addEventListener){
       elem.addEventListener(type, handler, false);
@@ -10,8 +12,8 @@ function addEvent(elem, type, handler){
       elem.attachEvent('on'+type, function(){ handler.call( elem ); });
     }
     return false;
-  }
-
+}
+}
 async function getProducts(){
 	const file = "json/products.json";
 	let response = await fetch(file,{
@@ -20,12 +22,13 @@ async function getProducts(){
 
 	if(response.ok){
 		let result = await response.json();
-		
+
 		filter(result)
 		loadProducts(result)
 	}
 }
 
+if(catalogPageItems || mainPageItems){
 
 function filter(data){
 	if(catalogPageItems){
@@ -52,7 +55,7 @@ function deleteItems(){
 function loadProducts(items){
 	if (catalogPageItems){
 		deleteItems();
-        
+
 	}
 	let productTemplateStart;
 
@@ -137,9 +140,10 @@ function loadProducts(items){
             
 		}
 	});
-    addToCart();
+	addToCart();
 }
 const cart = document.querySelector('.cart__items');
+
 
 addToCart = function() {
 	if (catalogPageItems){
@@ -191,7 +195,8 @@ addEvent(cart, 'click', function(e){
 		openCart();
 	}
 		})
-function openCart(){
+
+		function openCart(){
     let cartData = getCartData(),
     totalItems ='';
     if(cartData !== null){
@@ -256,6 +261,8 @@ buttonCloseCart.onclick = function(){
 	wrapper.classList.remove('_matteEffect');
 }
 
+}
+
 
 
 function testWebP(callback) {
@@ -288,7 +295,9 @@ burger.onclick = function() {
 
 
 window.onload = function(){
-    getProducts();
+    if(catalogPageItems|| mainPageItems) {
+        getProducts();
+    }
     if(window.outerWidth >= windowTrigger && mainPageItems){
         swiperInit();
         setTimeout(function () {
@@ -352,3 +361,14 @@ onresize = function(){
 
 
 
+const filterBlur= document.querySelector('#filterGreen');
+const filterBluePurple = document.querySelector('#filterPurple');
+
+const errorPage = document.querySelector('.error-page');
+
+if(errorPage){
+    filterBlur.classList.remove('filterBlurGreen');
+    filterBlur.classList.add('filterBlurBlue');
+    filterBluePurple.classList.remove('filterBlurPurple');
+    filterBluePurple.classList.add('filterBlurBLue');
+}
