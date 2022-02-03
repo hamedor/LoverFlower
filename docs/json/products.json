@@ -1,5 +1,5 @@
-{
-    "products":[
+
+    [
         {
             "id":1,
             "url":"#",
@@ -11,9 +11,11 @@
                 }
             ],
             "image": ".//img/catalog/flower01.jpg",
-            "price": "3000",
+            "price": "2000",
             "priceOld":"",
-            "type": "popular"
+            "type": "popular",
+            "light": "яркие",
+            "color": "оранжевый"
         },
         {   "id":2,
             "url":"#",
@@ -27,7 +29,9 @@
             "image": ".//img/catalog/flower02.jpg",
             "price": "3000",
             "priceOld":"",
-            "type": "popular"
+            "type": "popular",
+            "light": "нежные",
+            "color": "белый"
         },
         {   "id":3,
             "url":"#",
@@ -39,9 +43,11 @@
                 }
             ],
             "image": ".//img/catalog/flower03.jpg",
-            "price": "3000",
+            "price": "4000",
             "priceOld":"",
-            "type": "popular"
+            "type": "popular",
+            "light": "нежные",
+            "color": "синий"
         },
         {   "id":4,
             "url":"#",
@@ -53,9 +59,11 @@
                 }
             ],
             "image": ".//img/catalog/flower04.jpg",
-            "price": "3000",
+            "price": "2000",
             "priceOld":"",
-            "type": "popular"
+            "type": "popular",
+            "light": "нежные",
+            "color": "белый"
         },
         {   "id":5,
             "url":"#",
@@ -67,9 +75,11 @@
                 }
             ],
             "image": ".//img/catalog/flower05.jpg",
-            "price": "3000",
+            "price": "4000",
             "priceOld":"",
-            "type": "popular"
+            "type": "popular",
+            "light": "яркие",
+            "color": "розовый"
         },
         {   "id":6,
             "url":"#",
@@ -83,7 +93,9 @@
             "image": ".//img/catalog/flower06.jpg",
             "price": "3000",
             "priceOld":"",
-            "type": "popular"
+            "type": "popular",
+            "light": "нежные",
+            "color": "розовый"
         },
         {
             "id":7,
@@ -96,8 +108,10 @@
                 }
             ],
             "image": ".//img/catalog/flower07.jpg",
-            "price": "3000",
-            "priceOld":""
+            "price": "5000",
+            "priceOld":"",
+            "light": "нежные",
+            "color": "белый"
         },
         {
             "id":8,
@@ -111,7 +125,9 @@
             ],
             "image": ".//img/catalog/flower08.jpg",
             "price": "3000",
-            "priceOld":""
+            "priceOld":"",
+            "light": "нежные",
+            "color": "розовый"
         },
         {
             "id":9,
@@ -124,8 +140,10 @@
                 }
             ],
             "image": ".//img/catalog/flower09.jpg",
-            "price": "3000",
-            "priceOld":""
+            "price": "2000",
+            "type": "popular",
+            "light": "нежные",
+            "color": "желтый"
         },
         {
             "id":10,
@@ -138,8 +156,10 @@
                 }
             ],
             "image": ".//img/catalog/flower10.jpg",
-            "price": "3000",
-            "priceOld":""
+            "price": "4000",
+            "priceOld":"",
+            "light": "яркие",
+            "color": "желтый"
         },
         {
             "id":11,
@@ -152,8 +172,9 @@
                 }
             ],
             "image": ".//img/catalog/flower11.jpg",
-            "price": "3000",
-            "priceOld":""
+            "price": "2000",
+            "priceOld":"",
+            "light": "яркие",
+            "color": "синий"
         }
     ]
-}
