@@ -3,6 +3,7 @@ const catalogPageItems = document.querySelector(".products-catalog");
 const items = document.querySelector(".item-product");
 const checkbox = document.querySelector('#filters');
 
+
 if(catalogPageItems || mainPageItems){
 
 function addEvent(elem, type, handler){
@@ -41,6 +42,7 @@ function filter(data){
 				(!colors.length || colors.includes(n.color))
 				))
 			})}
+			
         }
 
 function deleteItems(){
@@ -48,9 +50,6 @@ function deleteItems(){
 		catalogPageItems.removeChild(catalogPageItems.lastChild);
 	}
 }
-
-
-
 
 function loadProducts(items){
 	if (catalogPageItems){
@@ -104,16 +103,14 @@ function loadProducts(items){
 
 		let productTemplatePrices = ``;
 		let productTemplatePricesStart = `<div class="item-product__prices">`;
-		let productTemplatePricesCurrent = `<div class="item-product__price">Rp ${productPrice}</div>`;
-		let productTemplatePricesOld = `<del class="item-product__price item-product__oldPrice">Rp ${productPriceOld}</del>`;
+		
+	
 		let productTemplatePricesEnd = `</div>`;
 
 		productTemplatePrices = productTemplatePricesStart;
-		productTemplatePrices += productTemplatePricesCurrent;
+		
 
-		if(productPriceOld){
-			productTemplatePrices += productTemplatePricesOld;
-		}
+		
 		productTemplatePrices += productTemplatePricesEnd;
 
 		let productTemplateButton = `
@@ -332,7 +329,6 @@ function swiperInit(){
 			},
 });
 }
-	
 }
 
 function swiperDestroy(){
@@ -371,4 +367,22 @@ if(errorPage){
     filterBlur.classList.add('filterBlurBlue');
     filterBluePurple.classList.remove('filterBlurPurple');
     filterBluePurple.classList.add('filterBlurBLue');
+}
+const screenWidth = window.screen.width;
+const header = document.querySelector('.header');
+const heading = document.querySelector('.main__heading')
+const headingMobile = document.querySelector('.heading__mobile');
+
+if(screenWidth <= 767.98){
+    window.addEventListener('scroll', function() {
+        console.log(window.pageYOffset)
+        if(window.pageYOffset >= 850){
+            headingMobile.style.display ="block";
+            
+        }
+        if(window.pageYOffset <= 850){
+            headingMobile.style.display ="none";
+           
+        }
+    });
 }
