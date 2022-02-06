@@ -30,7 +30,6 @@ async function getProducts(){
 }
 
 if(catalogPageItems || mainPageItems){
-
 function filter(data){
 	if(catalogPageItems){
 		checkbox.addEventListener('input',function(){
@@ -42,7 +41,6 @@ function filter(data){
 				(!colors.length || colors.includes(n.color))
 				))
 			})}
-			
         }
 
 function deleteItems(){
@@ -90,35 +88,22 @@ function loadProducts(items){
 			productTemplateLabels += productTemplateLabelsContent;
 			productTemplateLabels += productTemplateLabelsEnd;
 		}
-	
 		let productTemplateImage =
 		` <a href="${productUrl}" class="item-product__image">
 		<img id="image" src="${productImage}" alt="${productTitle}"></a>
 		`
-
 		let productTemplateBody = `
 		<p class="item-product__title">${productTitle}</p>
 		<p class="item-product__price">${productPrice}</p>
 		`
-
 		let productTemplatePrices = ``;
 		let productTemplatePricesStart = `<div class="item-product__prices">`;
-		
-	
 		let productTemplatePricesEnd = `</div>`;
-
 		productTemplatePrices = productTemplatePricesStart;
-		
-
-		
 		productTemplatePrices += productTemplatePricesEnd;
-
 		let productTemplateButton = `
-		
 			<button class="button-cart addToCart">В корзину</button>
-		
 		`;
-		
 		let productTemplate = "";
 		productTemplate += productTemplateStart;
 	//	productTemplate += productTemplateLabels;
@@ -127,9 +112,6 @@ function loadProducts(items){
 		productTemplate += productTemplatePrices;
 		productTemplate += productTemplateButton;
 		productTemplate += productTemplateEnd;
-
-		
-
 		if((mainPageItems)){
 			mainPageItems.insertAdjacentHTML("beforeend", productTemplate);
 		}else if(catalogPageItems){
@@ -138,6 +120,7 @@ function loadProducts(items){
 		}
 	});
 	addToCart();
+	itemCount();
 }
 const cart = document.querySelector('.cart__items');
 
@@ -193,7 +176,7 @@ addEvent(cart, 'click', function(e){
 	}
 		})
 
-		function openCart(){
+function openCart(){
     let cartData = getCartData(),
     totalItems ='';
     if(cartData !== null){
@@ -223,13 +206,35 @@ addEvent(cart, 'click', function(e){
 	totalItems += '</div>';
 	totalItems += '<hr class= "cart__hr">'
     }
+	
+	
 
 
     cart.innerHTML = totalItems;
 } else {
     cart.innerHTML = 'В корзине пусто!';
 }
+itemCount();
+
 }
+
+function itemCount(){
+	let countArray =[];
+	let totalItemsCount = document.querySelector("#totalItemsCount");
+	[...document.querySelectorAll('.item__count')].map(v=>countArray.push(v.textContent))
+	console.log(countArray);
+	const reducer = (previousValue,currentValue) => +previousValue + +currentValue
+
+	//console.log(countArray.reduce(reduser))
+	if(countArray.length !== 0){
+	
+	totalItemsCount.innerHTML=countArray.reduce(reducer);
+	}else{
+	totalItemsCount.innerHTML ='';
+	}
+}
+
+
 
 
 function setCartData(o){
@@ -238,11 +243,13 @@ function setCartData(o){
 function getCartData(){
     let a = JSON.parse(localStorage.getItem('cart'));
     return a;
+
 }
 
 
 
 const buttonOpenCart = document.querySelector('#buttonOpenCart');
+const buttonOpenCartMobile = document.querySelector('#buttonOpenCartMobile');
 const buttonCloseCart = document.querySelector('#buttonCloseCart');
 const cartPage = document.querySelector('.cart');
 const wrapper = document.querySelector('.wrapper');
@@ -251,13 +258,17 @@ buttonOpenCart.onclick = function(){
 	cartPage.classList.add('_opened');
 	wrapper.classList.add('_matteEffect');
 	openCart()
-
 }
+buttonOpenCartMobile.onclick = function(){
+	cartPage.classList.add('_opened');
+	wrapper.classList.add('_matteEffect');
+	openCart()
+}
+
 buttonCloseCart.onclick = function(){
 	cartPage.classList.remove('_opened');
 	wrapper.classList.remove('_matteEffect');
 }
-
 }
 
 
@@ -294,6 +305,8 @@ burger.onclick = function() {
 window.onload = function(){
     if(catalogPageItems|| mainPageItems) {
         getProducts();
+        openCart();
+        itemCount();
     }
     if(window.outerWidth >= windowTrigger && mainPageItems){
         swiperInit();
@@ -361,6 +374,7 @@ const filterBlur= document.querySelector('#filterGreen');
 const filterBluePurple = document.querySelector('#filterPurple');
 
 const errorPage = document.querySelector('.error-page');
+const deliveryPage = document.querySelector('.delivery');
 
 if(errorPage){
     filterBlur.classList.remove('filterBlurGreen');
@@ -368,6 +382,14 @@ if(errorPage){
     filterBluePurple.classList.remove('filterBlurPurple');
     filterBluePurple.classList.add('filterBlurBLue');
 }
+if(deliveryPage){
+    filterBlur.classList.remove('filterBlurGreen');
+    filterBlur.classList.add('filterBlurBrown');
+    filterBluePurple.classList.remove('filterBlurPurple');
+    filterBluePurple.classList.add('filterBlurBrown');
+}
+/*
+
 const screenWidth = window.screen.width;
 const header = document.querySelector('.header');
 const heading = document.querySelector('.main__heading')
@@ -386,3 +408,4 @@ if(screenWidth <= 767.98){
         }
     });
 }
+*/
