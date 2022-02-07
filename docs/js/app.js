@@ -218,19 +218,21 @@ itemCount();
 
 }
 
+
 function itemCount(){
 	let countArray =[];
 	let totalItemsCount = document.querySelector("#totalItemsCount");
+	const spanContainer = document.querySelector('#spanContainer');
 	[...document.querySelectorAll('.item__count')].map(v=>countArray.push(v.textContent))
-	console.log(countArray);
+
 	const reducer = (previousValue,currentValue) => +previousValue + +currentValue
 
-	//console.log(countArray.reduce(reduser))
 	if(countArray.length !== 0){
-	
-	totalItemsCount.innerHTML=countArray.reduce(reducer);
+		spanContainer.classList.add('spanContainer-green');
+		totalItemsCount.innerHTML=countArray.reduce(reducer);
 	}else{
-	totalItemsCount.innerHTML ='';
+		spanContainer.classList.remove('spanContainer-green');
+		totalItemsCount.innerHTML ='';
 	}
 }
 
@@ -375,8 +377,10 @@ const filterBluePurple = document.querySelector('#filterPurple');
 
 const errorPage = document.querySelector('.error-page');
 const deliveryPage = document.querySelector('.delivery');
+const aboutPage = document.querySelector('.about');
+const faqPage = document.querySelector('.faq');
 
-if(errorPage){
+if(errorPage || faqPage){
     filterBlur.classList.remove('filterBlurGreen');
     filterBlur.classList.add('filterBlurBlue');
     filterBluePurple.classList.remove('filterBlurPurple');
@@ -388,6 +392,13 @@ if(deliveryPage){
     filterBluePurple.classList.remove('filterBlurPurple');
     filterBluePurple.classList.add('filterBlurBrown');
 }
+if(aboutPage){
+    filterBlur.classList.remove('filterBlurGreen');
+    filterBlur.classList.add('filterBlurYellow');
+    filterBluePurple.classList.remove('filterBlurPurple');
+    filterBluePurple.classList.add('filterBlurYellow');
+}
+
 /*
 
 const screenWidth = window.screen.width;
