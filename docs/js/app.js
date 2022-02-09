@@ -4,7 +4,7 @@ const items = document.querySelector(".item-product");
 const checkbox = document.querySelector('#filters');
 
 
-if(catalogPageItems || mainPageItems){
+
 
 function addEvent(elem, type, handler){
     if(elem.addEventListener){
@@ -14,34 +14,222 @@ function addEvent(elem, type, handler){
     }
     return false;
 }
+
+const result = [
+    {
+        "id":1,
+        "url":"#",
+        "title": "Flower1",
+        "text": "sometext",
+        "labels":[
+            {
+                "type": "HOTflower"
+            }
+        ],
+        "image": ".//img/catalog/flower01.jpg",
+        "price": "2000",
+        "priceOld":"",
+        "type": "popular",
+        "light": "яркие",
+        "color": "оранжевый"
+    },
+    {   "id":2,
+        "url":"#",
+        "title": "Flower2",
+        "text": "sometext",
+        "labels":[
+            {
+                "type": "HOTflower"
+            }
+        ],
+        "image": ".//img/catalog/flower02.jpg",
+        "price": "3000",
+        "priceOld":"",
+        "type": "popular",
+        "light": "нежные",
+        "color": "белый"
+    },
+    {   "id":3,
+        "url":"#",
+        "title": "Flower3",
+        "text": "sometext",
+        "labels":[
+            {
+                "type": "HOTflower"
+            }
+        ],
+        "image": ".//img/catalog/flower03.jpg",
+        "price": "4000",
+        "priceOld":"",
+        "type": "popular",
+        "light": "нежные",
+        "color": "синий"
+    },
+    {   "id":4,
+        "url":"#",
+        "title": "Flower4",
+        "text": "sometext",
+        "labels":[
+            {
+                "type": "HOTflower"
+            }
+        ],
+        "image": ".//img/catalog/flower04.jpg",
+        "price": "2000",
+        "priceOld":"",
+        "type": "popular",
+        "light": "нежные",
+        "color": "белый"
+    },
+    {   "id":5,
+        "url":"#",
+        "title": "Flower5",
+        "text": "sometext",
+        "labels":[
+            {
+                "type": "HOTflower"
+            }
+        ],
+        "image": ".//img/catalog/flower05.jpg",
+        "price": "4000",
+        "priceOld":"",
+        "type": "popular",
+        "light": "яркие",
+        "color": "розовый"
+    },
+    {   "id":6,
+        "url":"#",
+        "title": "Flower6",
+        "text": "sometext",
+        "labels":[
+            {
+                "type": "HOTflower"
+            }
+        ],
+        "image": ".//img/catalog/flower06.jpg",
+        "price": "3000",
+        "priceOld":"",
+        "type": "popular",
+        "light": "нежные",
+        "color": "розовый"
+    },
+    {
+        "id":7,
+        "url":"#",
+        "title": "Flower7",
+        "text": "sometext",
+        "labels":[
+            {
+                "type": "HOTflower"
+            }
+        ],
+        "image": ".//img/catalog/flower07.jpg",
+        "price": "5000",
+        "priceOld":"",
+        "light": "нежные",
+        "color": "белый"
+    },
+    {
+        "id":8,
+        "url":"#",
+        "title": "Flower8",
+        "text": "sometext",
+        "labels":[
+            {
+                "type": "HOTflower"
+            }
+        ],
+        "image": ".//img/catalog/flower08.jpg",
+        "price": "3000",
+        "priceOld":"",
+        "light": "нежные",
+        "color": "розовый"
+    },
+    {
+        "id":9,
+        "url":"#",
+        "title": "Flower9",
+        "text": "sometext",
+        "labels":[
+            {
+                "type": "HOTflower"
+            }
+        ],
+        "image": ".//img/catalog/flower09.jpg",
+        "price": "2000",
+        "light": "нежные",
+        "color": "желтый"
+    },
+    {
+        "id":10,
+        "url":"#",
+        "title": "Flower10",
+        "text": "sometext",
+        "labels":[
+            {
+                "type": "HOTflower"
+            }
+        ],
+        "image": ".//img/catalog/flower10.jpg",
+        "price": "4000",
+        "priceOld":"",
+        "light": "яркие",
+        "color": "желтый"
+    },
+    {
+        "id":11,
+        "url":"#",
+        "title": "Flower11",
+        "text": "sometext",
+        "labels":[
+            {
+                "type": "HOTflower"
+            }
+        ],
+        "image": ".//img/catalog/flower11.jpg",
+        "price": "2000",
+        "priceOld":"",
+        "light": "яркие",
+        "color": "синий"
+    }
+]
+
+function getProducts(){
+    if(mainPageItems){
+        loadProducts(result.filter(e => e.type=="popular"));
+    }else{
+        loadProducts(result);
+        filter(result);
+    }
 }
-async function getProducts(){
-	const file = "json/products.json";
-	let response = await fetch(file,{
-		method:"GET"
-	});
 
-	if(response.ok){
-		let result = await response.json();
-
-		filter(result)
-		loadProducts(result)
-	}
-}
-
-if(catalogPageItems || mainPageItems){
 function filter(data){
 	if(catalogPageItems){
+		const lightCheck = document.querySelector('#light').getElementsByTagName('input');
+		const colorCheck = document.querySelector("#color").getElementsByTagName('input');
+		const restore = document.querySelector('#restoreFilter');
+		restore.onclick = function(){
+			for(let i=0;i<lightCheck.length;i++){
+				lightCheck[i].checked= false;
+			}
+			for(let i=0;i<colorCheck.length;i++){
+				colorCheck[i].checked= false;
+			}
+
+				getProducts();
+			}
 		checkbox.addEventListener('input',function(){
 			const lights = [...checkbox.querySelectorAll('#light input:checked')].map(n => n.value);
 			const colors = [...checkbox.querySelectorAll('#color input:checked')].map(n => n.value);
 
-			loadProducts(data.filter(n =>
+		loadProducts(data.filter(n =>
 				(!lights.length || lights.includes(n.light)) &&
 				(!colors.length || colors.includes(n.color))
 				))
 			})}
-        }
+
+}
+
 
 function deleteItems(){
 	while(catalogPageItems.firstChild){
@@ -62,7 +250,6 @@ function loadProducts(items){
 		const productImage = d.image;
 		const productTitle = d.title;
 		const productPrice = d.price;
-		const productPriceOld = d.priceOld;
 		const productLabels = d.labels;
 
 
@@ -106,7 +293,6 @@ function loadProducts(items){
 		`;
 		let productTemplate = "";
 		productTemplate += productTemplateStart;
-	//	productTemplate += productTemplateLabels;
 		productTemplate += productTemplateImage;
 		productTemplate += productTemplateBody;
 		productTemplate += productTemplatePrices;
@@ -119,13 +305,15 @@ function loadProducts(items){
             
 		}
 	});
-	addToCart();
-	itemCount();
+    if(catalogPageItems || mainPageItems){
+	    addToCart();
+    }
+	
 }
 const cart = document.querySelector('.cart__items');
 
 
-addToCart = function() {
+function addToCart() {
 	if (catalogPageItems){
 		var add = document.querySelectorAll('.item-product');
 	}else if(mainPageItems){
@@ -144,7 +332,6 @@ addToCart = function() {
 
 				if(cartData.hasOwnProperty(itemId)){
 					cartData[itemId][4] += 1;
-					// itemCount +=1;
 				} else {
 					cartData[itemId] = [itemId, itemImage,itemTitle, itemPrice, 1];
 				}
@@ -153,14 +340,14 @@ addToCart = function() {
 		})}
 	}
 
-addEvent(cart, 'click', function(e){
 
-	if(e.target.className === 'up-button') {
-		let itemId = e.target.getAttribute('item-id');
-		let cartData = getCartData();
-		cartData[itemId][4] +=1;
-		setCartData(cartData)
-		openCart();
+addEvent(cart, 'click', function(e){
+    if(e.target.className === 'up-button') {
+	    let itemId = e.target.getAttribute('item-id');
+	    let cartData = getCartData();
+	    cartData[itemId][4] +=1;
+	    setCartData(cartData)
+	    openCart();
 	}else if(e.target.className === 'down-button'){
 		let itemId = e.target.getAttribute('item-id');
 		let cartData = getCartData();
@@ -175,6 +362,7 @@ addEvent(cart, 'click', function(e){
 		openCart();
 	}
 		})
+
 
 function openCart(){
     let cartData = getCartData(),
@@ -206,38 +394,38 @@ function openCart(){
 	totalItems += '</div>';
 	totalItems += '<hr class= "cart__hr">'
     }
-	
-	
-
-
     cart.innerHTML = totalItems;
 } else {
     cart.innerHTML = 'В корзине пусто!';
 }
-itemCount();
-
+    itemCount();
 }
 
 
 function itemCount(){
 	let countArray =[];
 	let totalItemsCount = document.querySelector("#totalItemsCount");
+	let totalItemsCountMobile = document.querySelector("#totalItemsCountMobile");
 	const spanContainer = document.querySelector('#spanContainer');
+	const spanContainerMobile = document.querySelector('#spanContainerMobile');
+	const screenWidth = window.screen.width;
 	[...document.querySelectorAll('.item__count')].map(v=>countArray.push(v.textContent))
 
 	const reducer = (previousValue,currentValue) => +previousValue + +currentValue
 
 	if(countArray.length !== 0){
-		spanContainer.classList.add('spanContainer-green');
-		totalItemsCount.innerHTML=countArray.reduce(reducer);
+			spanContainer.classList.add('spanContainer-green');
+			spanContainerMobile.classList.add('spanContainer-green');
+			totalItemsCountMobile.innerHTML=countArray.reduce(reducer);
+			spanContainerMobile.classList.add('spanContainer-green');
+			totalItemsCount.innerHTML=countArray.reduce(reducer);
 	}else{
 		spanContainer.classList.remove('spanContainer-green');
 		totalItemsCount.innerHTML ='';
+		spanContainerMobile.classList.remove('spanContainer-green');
+		totalItemsCountMobile.innerHTML ='';
 	}
 }
-
-
-
 
 function setCartData(o){
     localStorage.setItem('cart', JSON.stringify(o));
@@ -248,28 +436,28 @@ function getCartData(){
 
 }
 
+function cartOpenAndClose(){
 
+    const buttonOpenCart = document.querySelector('#buttonOpenCart');
+    const buttonOpenCartMobile = document.querySelector('#buttonOpenCartMobile');
+    const buttonCloseCart = document.querySelector('#buttonCloseCart');
+    const cartPage = document.querySelector('.cart');
+    const wrapper = document.querySelector('.wrapper');
 
-const buttonOpenCart = document.querySelector('#buttonOpenCart');
-const buttonOpenCartMobile = document.querySelector('#buttonOpenCartMobile');
-const buttonCloseCart = document.querySelector('#buttonCloseCart');
-const cartPage = document.querySelector('.cart');
-const wrapper = document.querySelector('.wrapper');
+    buttonOpenCart.onclick = function(){
+        cartPage.classList.add('_opened');
+        wrapper.classList.add('_matteEffect');
+      //  openCart();
+    }
+    buttonOpenCartMobile.onclick = function(){
+        cartPage.classList.add('_opened');
+        wrapper.classList.add('_matteEffect');
+      //  openCart();
+    }
 
-buttonOpenCart.onclick = function(){
-	cartPage.classList.add('_opened');
-	wrapper.classList.add('_matteEffect');
-	openCart()
-}
-buttonOpenCartMobile.onclick = function(){
-	cartPage.classList.add('_opened');
-	wrapper.classList.add('_matteEffect');
-	openCart()
-}
-
-buttonCloseCart.onclick = function(){
-	cartPage.classList.remove('_opened');
-	wrapper.classList.remove('_matteEffect');
+    buttonCloseCart.onclick = function(){
+        cartPage.classList.remove('_opened');
+        wrapper.classList.remove('_matteEffect');
 }
 }
 
@@ -305,18 +493,20 @@ burger.onclick = function() {
 
 
 window.onload = function(){
-    if(catalogPageItems|| mainPageItems) {
         getProducts();
         openCart();
         itemCount();
-    }
+        cartOpenAndClose();
+    
     if(window.outerWidth >= windowTrigger && mainPageItems){
         swiperInit();
         setTimeout(function () {
             swiper.update(swiper);
              }, 500);
     }
+    
 }
+
 let swiper = null;
 let windowTrigger = 768;
 let swiperContainer = document.querySelector('.swiper-container');
@@ -379,6 +569,8 @@ const errorPage = document.querySelector('.error-page');
 const deliveryPage = document.querySelector('.delivery');
 const aboutPage = document.querySelector('.about');
 const faqPage = document.querySelector('.faq');
+const homePage = document.querySelector('.home');
+const contactsPage = document.querySelector('.contacts');
 
 if(errorPage || faqPage){
     filterBlur.classList.remove('filterBlurGreen');
@@ -398,25 +590,35 @@ if(aboutPage){
     filterBluePurple.classList.remove('filterBlurPurple');
     filterBluePurple.classList.add('filterBlurYellow');
 }
-
-/*
-
+if(homePage){
+    filterBlur.classList.remove('filterBlurBlue');
+    filterBlur.classList.add('filterBlurGreen');
+    filterBluePurple.classList.remove('filterBlurYellow');
+    filterBluePurple.classList.add('filterBlurPurple');
+}
+if(contactsPage){
+    filterBlur.classList.remove('filterBlurGreen');
+    filterBlur.classList.add('filterBlurRed');
+    filterBluePurple.classList.remove('filterBlurPurple');
+    filterBluePurple.classList.add('filterBlurRed');
+}
 const screenWidth = window.screen.width;
 const header = document.querySelector('.header');
 const heading = document.querySelector('.main__heading')
 const headingMobile = document.querySelector('.heading__mobile');
 
+if(!homePage && screenWidth <= 767.98){
+    headingMobile.style.display ="block";
+}
+
 if(screenWidth <= 767.98){
     window.addEventListener('scroll', function() {
-        console.log(window.pageYOffset)
-        if(window.pageYOffset >= 850){
+        if(window.pageYOffset >= 90){
             headingMobile.style.display ="block";
-            
         }
-        if(window.pageYOffset <= 850){
+        if(window.pageYOffset <= 90 && homePage){
             headingMobile.style.display ="none";
            
         }
     });
 }
-*/
