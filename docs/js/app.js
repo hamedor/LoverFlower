@@ -447,22 +447,20 @@ function cartOpenAndClose(){
     buttonOpenCart.onclick = function(){
         cartPage.classList.add('_opened');
         wrapper.classList.add('_matteEffect');
-      //  openCart();
+        document.body.classList.add("_lock");
     }
     buttonOpenCartMobile.onclick = function(){
         cartPage.classList.add('_opened');
         wrapper.classList.add('_matteEffect');
-      //  openCart();
+        document.body.classList.add("_lock");
     }
 
     buttonCloseCart.onclick = function(){
         cartPage.classList.remove('_opened');
         wrapper.classList.remove('_matteEffect');
+        document.body.classList.remove("_lock");
 }
 }
-
-
-
 function testWebP(callback) {
 	var webP = new Image();
 	webP.onload = webP.onerror = function () {
@@ -478,17 +476,6 @@ testWebP(function (support) {
 	}
 });
 
-
-const burger = document.querySelector(".burger");
-const nav = document.querySelector(".header__list");
-const burgerContainer = document.querySelector(".burgerContainer");
-
-burger.onclick = function() {
-    burger.classList.toggle("_active");
-    nav.classList.toggle("_active");
-    document.body.classList.toggle("_lock");
-    burgerContainer.classList.toggle("burgerContainer--right");
-}
 
 
 
@@ -540,7 +527,6 @@ function swiperDestroy(){
 	if(swiper){
 		swiper.destroy();
 		swiper= null;
-		
 	}
 }
 
@@ -548,14 +534,10 @@ onresize = function(){
 	let width = window.innerWidth;
 	if(width >= windowTrigger){
 			swiperInit();
-			
 	}else{
 			swiperDestroy();
-		
 		}
-}
-
-
+	}
 }
 
 
@@ -618,7 +600,20 @@ if(screenWidth <= 767.98){
         }
         if(window.pageYOffset <= 90 && homePage){
             headingMobile.style.display ="none";
-           
         }
     });
 }
+
+const burger = document.querySelector(".burger");
+const nav = document.querySelector(".header__list");
+const burgerContainer = document.querySelector(".burgerContainer");
+const body = document.querySelector('main');
+
+burger.onclick = function() {
+    burger.classList.toggle("_active");
+    nav.classList.toggle("_active");
+    document.body.classList.toggle("_lock");
+    burgerContainer.classList.toggle("burgerContainer--right");
+	body.classList.toggle('_matteEffect');
+}
+
