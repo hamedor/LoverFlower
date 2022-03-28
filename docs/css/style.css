@@ -170,9 +170,9 @@ body._lock {
 
 .buttonOpenCart {
   padding: 20px;
-  -webkit-transform: translateY(-10px);
-      -ms-transform: translateY(-10px);
-          transform: translateY(-10px);
+  -webkit-transform: translateY(-2px);
+      -ms-transform: translateY(-2px);
+          transform: translateY(-2px);
 }
 
 .cart {
@@ -203,6 +203,8 @@ body._lock {
           flex-direction: column;
   margin-top: 80px;
   padding-left: 30px;
+  height: 75%;
+  overflow-y: scroll;
 }
 
 .cart__heading {
@@ -215,7 +217,7 @@ body._lock {
 }
 
 .cart__hr {
-  width: 360px;
+  width: 100%;
   height: 1px;
   top: 80px;
   left: 10px;
@@ -233,9 +235,35 @@ body._lock {
   top: 279px;
 }
 
+.cart__button {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+      -ms-transform: translate(-50%);
+          transform: translate(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80%;
+  height: 50px;
+  border: 1px solid white;
+}
+
+.cart__text {
+  text-align: center;
+  padding-top: 20px;
+}
+
 .upDownContainer {
   width: 100px;
-  height: 30px;
+  height: 26px;
   position: relative;
   border: 0.5px solid #555555;
   top: 0;
@@ -251,6 +279,11 @@ body._lock {
   padding-right: 10px;
 }
 
+.up-button:hover,
+.down-button:hover {
+  background-color: #43FFD2;
+}
+
 .up-button {
   position: absolute;
   right: 0;
@@ -264,12 +297,18 @@ body._lock {
 .delete-button {
   color: white;
   background-color: black;
-  text-decoration: underline;
-  text-transform: uppercase;
+  border: 1px solid white;
+  width: 50px;
+  height: 20px;
   font-size: 10px;
   position: absolute;
   right: 40px;
+  text-transform: uppercase;
   bottom: 30px;
+}
+
+.delete-button:hover {
+  background-color: #7d2253;
 }
 
 .item {
@@ -283,7 +322,7 @@ body._lock {
 
 .item__count {
   position: absolute;
-  top: 5px;
+  top: 4px;
   right: 46px;
 }
 
@@ -463,6 +502,10 @@ body._lock {
   margin-top: 10px;
 }
 
+.phoneIcon {
+  padding-top: 6px;
+}
+
 .iconsContainer-left {
   margin-right: auto;
   margin-top: 20px;
@@ -559,7 +602,7 @@ body._lock {
 }
 
 .list-footer__item {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .heading-mobile {
@@ -745,6 +788,10 @@ body._lock {
   margin-left: auto;
 }
 
+.contacts-main__item-contact {
+  margin-top: 100px !important;
+}
+
 .contacts-main__item--greenText {
   color: #43FFD2;
   font-size: 14px;
@@ -783,6 +830,11 @@ body._lock {
 .iconsContainer .blurEffect {
   width: 31%;
   height: 28%;
+}
+
+.iconsContainer a img {
+  position: relative;
+  z-index: 3;
 }
 
 .heading {
@@ -1552,9 +1604,9 @@ body._lock {
 .menu-catalog {
   position: relative;
   margin-top: 27px;
-  max-width: 920px;
-  height: 350px;
-  z-index: 2;
+  max-width: 800px;
+  height: 325px;
+  z-index: 3;
 }
 
 .menu-catalog__heading {
@@ -1675,7 +1727,7 @@ body._lock {
 }
 
 .item-product {
-  margin-left: 30px;
+  margin-left: 25px;
   max-width: 225px;
   margin-top: 25px;
   margin-bottom: 10px;
@@ -2087,7 +2139,7 @@ body._lock {
 }
 
 .about__nav {
-  margin-top: 130px;
+  margin-top: 35px;
 }
 
 .about__heading {

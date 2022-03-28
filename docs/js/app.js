@@ -311,7 +311,7 @@ function loadProducts(items){
 	
 }
 const cart = document.querySelector('.cart__items');
-
+const cartText = document.querySelector('.cart__sum');
 
 function addToCart() {
 	if (catalogPageItems){
@@ -337,29 +337,60 @@ function addToCart() {
 				}
 				setCartData(cartData)
 				openCart();
+                priceCounter();
 		})}
 	}
+function priceCounter(){
+    let cartData = getCartData(),
+    totalPrice = '';
+    for(let items in cartData){
+        let price = cartData[items][3];
+        let count = cartData[items][4];
+        let res = cartData[items].reduce((i) => price * count);
+        totalPrice = +totalPrice + +res;
+        if(isEmpty(cartData)){
+            cartText.innerHTML = 0;
+        }else{
+            cartText.innerHTML = totalPrice;
+        }
+    }
+}
+
+function isEmpty(obj){
+    for (let key in obj){
+        return false;
+    }
+    return true;
+}
 
 
 addEvent(cart, 'click', function(e){
     if(e.target.className === 'up-button') {
 	    let itemId = e.target.getAttribute('item-id');
 	    let cartData = getCartData();
+        let itemPrice = e.target.querySelector('.item__price')
 	    cartData[itemId][4] +=1;
 	    setCartData(cartData)
 	    openCart();
+        priceCounter();
 	}else if(e.target.className === 'down-button'){
 		let itemId = e.target.getAttribute('item-id');
 		let cartData = getCartData();
 		cartData[itemId][4] -=1;
 		setCartData(cartData)
 		openCart();
+        priceCounter();
 	}else if(e.target.className === 'delete-button'){
 		let itemId = e.target.getAttribute('item-id');
 		let cartData = getCartData();
 		delete cartData[itemId];
 		setCartData(cartData);
 		openCart();
+        priceCounter();
+        if(isEmpty(cartData)){
+            cartText.innerHTML = 0;
+            cart.innerHTML = 'В корзине пусто!'
+        }
 	}
 		})
 
@@ -399,6 +430,11 @@ function openCart(){
     cart.innerHTML = 'В корзине пусто!';
 }
     itemCount();
+    priceCounter();
+    if(isEmpty(cartData)){
+        cartText.innerHTML = 0;
+        cart.innerHTML = 'В корзине пусто!'
+    }
 }
 
 
@@ -461,6 +497,8 @@ function cartOpenAndClose(){
         document.body.classList.remove("_lock");
 }
 }
+
+
 function testWebP(callback) {
 	var webP = new Image();
 	webP.onload = webP.onerror = function () {
